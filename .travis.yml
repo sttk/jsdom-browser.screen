@@ -1,0 +1,22 @@
+sudo: false
+
+language: node_js
+
+node_js:
+  - '10'
+  - '9'
+  - '8'
+  - '7'
+  - '6'
+
+after_success: 'npm run coveralls'
+
+os:
+  - linux
+
+matrix:
+  include:
+  - name: "web-platform-test"
+    node_js: stable
+    before_script: npm run wpt:install
+    script: npx gulp wpt

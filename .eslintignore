@@ -1,0 +1,5 @@
+# Coverage directory used by tools like istanbul
+coverage
+
+# webidl2js generates automatically
+src/idl/generated
