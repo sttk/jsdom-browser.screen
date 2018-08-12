@@ -14,7 +14,7 @@ const wptRunner = require('wpt-runner')
 const wptConfig = require('./test/wpt/config')
 
 
-function help(done) {
+function help (done) {
   ghelp.show()
   done()
 }
@@ -87,16 +87,19 @@ function wpt () {
   const { testsDir, setup, filter } = wptConfig
   return wptRunner(testsDir, { setup, filter })
 }
+wpt.description = 'Runs web-platform-tests.'
 
 
 function watchLint () {
   return watch(srcs, lint)
 }
+watchLint.displayName = 'watch:lint'
 watchLint.description = 'Watches file changes, then lints.'
 
 function watchTest () {
   return watch(srcs, series(lint, test))
 }
+watchTest.displayName = 'watch:test'
 watchTest.description = 'Watches file changes, then lints and tests.'
 
 
