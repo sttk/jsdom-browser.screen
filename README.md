@@ -104,109 +104,49 @@ interface Screen {
 ### <u>class Screen</u>
 
 Is the implementation of the Screen API.
+This class represents information about the screen of the monitor device.
 
-`Screen` represents information about the screen of the monitor device.
+#### Properties:
 
-#### <u>.width : number</u>
-
-(read only)
-
-Is the width of the output device, in CSS pixels.
-
-#### <u>.height : number</u>
-
-(read only)
-
-Is the height of the output device, in CSS pixels.
-
-#### <u>.availTop : number</u>
-
-(read only)
-
-The available top position of the rendering surface of the monitor device, in CSS pixels. This property is not specified in the specification, but is supported by most browsers.
-
-#### <u>.availLeft : number</u>
-
-(read only)
-
-The available left position of the rendering surface of the monitor device, in CSS pixels. This property is not specified in the specification, but is supported by most browsers.
-
-#### <u>.availWidth : number</u>
-
-(read only)
-
-The available width of the rendering surface of the monitor device, in CSS pixels.
-
-#### <u>.availHeight : number</u>
-
-(read only)
-
-The available height of the rendering surface of the monitor device, in CSS pixels.
-
-#### <u>.colorDepth : number</u>
-
-(read only)
-
-This value is always 24. This is useless but are included for compatiility.
-
-#### <u>.pixelDepth : number</u>
-
-(read only)
-
-This value is always 24. This is useless but are included for compatiility.
-
+| Name        |  Type  | Description |
+|:------------|:------:|:------------|
+| width       | number | Is the width of the output device, in CSS pixels. (read only) |
+| height      | number | Is the height of the output device, in CSS pixels. (read only) |
+| availTop    | number | The available top position of the rendering surface of the monitor device, in CSS pixels. This property is not specified in the specification, but is supported by most browsers. (read only) |
+| availLeft   | number | The available left position of the rendering surface of the monitor device, in CSS pixels. This property is not specified in the specification, but is supported by most browsers. (read only) |
+| availWidth  | number | The available width of the rendering surface of the monitor device, in CSS pixels. (read only) |
+| availHeight | number | The available height of the rendering surface of the monitor device, in CSS pixels. (read only) |
+| colorDepth  | number | This value is always 24. This is useless but are included for compatiility. (read only) |
+| pixelDepth  | number | This value is always 24. This is useless but are included for compatiility. (read only) |
 
 ### <u>class ScreenConfig</u>
 
 Is the class to configure a `Screen` object.
 
-#### <u>*constructor* (initConfig) : ScreenConfig</u>
+#### Properties:
+
+| Name        |  Type  | Description      |
+|:------------|:------:|:-----------------|
+| width       | number | Is the full width of the monitor device. |
+| height      | number | Is the full height of the monitor device. |
+| availTop    | number | Is the top position of available area from top side of the monitor device. |
+| availLeft   | number | Is the left position of available area from left side of the monitor device. |
+| availRight  | number | Is the right position of available area from right side of the monitor device. |
+| availBottom | number | Is the bottom position of available area from right side of the monitor device. |
+| deviceAngle | number | Is the angle from natural orientation of the monitor device. |
+| screenAngle | number | Is the angle among 0, 90, 180, 270 degrees from natural orientation of the monitor device. (read only) |
+| baseAngle   | number | Is the initial screen angle from natural orientation of the monitor device. |
+
+#### *constructor* (initConfig) : ScreenConfig
 
 Creates a new instance of this class.
 
-**Parameters:**
+##### Parameters:
 
 | Parameter    | Type                       | Description                      |
 |:-------------|:--------------------------:|:---------------------------------|
 | *initConfig* | object &#124; ScreenConfig | An object to initialize a new instance.|
 
-#### <u>.width : number</u>
-
-Is the full width of the monitor device.
-
-#### <u>.height : number</u>
-
-Is the full height of the monitor device.
-
-#### <u>.availTop : number</u>
-
-Is the top position of available area from top side of the monitor device.
-
-#### <u>.availLeft : number</u>
-
-Is the left position of available area from left side of the monitor device.
-
-#### <u>.availRight : number</u>
-
-Is the right position of available area from right side of the monitor device.
-
-#### <u>.availBottom : number</u>
-
-Is the bottom position of available area from right side of the monitor device.
-
-#### <u>.deviceAngle : number</u>
-
-Is the angle from natural orientation of the monitor device.
-
-#### <u>.screenAngle : number</u>
-
-(read only)
-
-Is the angle among 0, 90, 180, 360 degrees from natural orientation of the monitor device.
-
-#### <u>.baseAngle : number</u>
-
-Is the initial screen angle from natural orientation of the monitor device.
 
 ## License
 
