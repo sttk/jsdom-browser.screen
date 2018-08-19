@@ -1,5 +1,11 @@
+# Gulpfile
+gulpfile.*
+
 # Coverage directory used by tools like istanbul
 coverage
 
 # webidl2js generates automatically
 src/idl/generated
+
+# web-platform-tests
+test/wpt/tests
