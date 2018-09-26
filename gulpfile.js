@@ -26,17 +26,17 @@ const implDir = path.resolve(__dirname, 'src/idl')
 const tempDir = path.resolve(__dirname, 'src/idl/temp')
 const outDir = path.resolve(__dirname, 'src/idl/generated')
 
-function idl2js_prepare (done) {
-  idl2js_clean().then(() => {
+function idl2jsPrepare (done) {
+  idl2jsClean().then(() => {
     fs.mkdir(tempDir, done)
   })
 }
 
-function idl2js_clean () {
+function idl2jsClean () {
   return del(tempDir, { force: true })
 }
 
-function idl2js_convert () {
+function idl2jsConvert () {
   const webidl2js = new Webidl2js({
     implSuffix: '-impl',
     suppressErrors: true,
@@ -45,7 +45,7 @@ function idl2js_convert () {
   return webidl2js.generate(tempDir)
 }
 
-function idl2js_replace () {
+function idl2jsReplace () {
   return src([`${tempDir}/*.js`, '!**/utils.js'])
     .pipe(replace(
       '"./utils.js"',
@@ -59,7 +59,7 @@ function idl2js_replace () {
 }
 
 const idl2js =
-  series(idl2js_prepare, idl2js_convert, idl2js_replace, idl2js_clean)
+  series(idl2jsPrepare, idl2jsConvert, idl2jsReplace, idl2jsClean)
 idl2js.displayName = 'idl2js'
 idl2js.description = 'Converts WebIDLs to javascript codes.'
 
@@ -108,7 +108,7 @@ build.displayName = 'default'
 build.description = 'Builds this package.'
 
 
-for (let fn of [
+for (const fn of [
   help, idl2js, lint, test, wpt, watchLint, watchTest, build
 ]) {
   task(fn.displayName || fn.name, fn).help = fn.description
