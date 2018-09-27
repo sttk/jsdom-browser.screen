@@ -121,6 +121,8 @@ This class represents information about the screen of the monitor device.
 
 ### <u>class ScreenConfig</u>
 
+**extends [ClassConfig][class-config-base-url]**
+
 Is the class to configure a `Screen` object.
 
 #### Properties:
@@ -137,15 +139,19 @@ Is the class to configure a `Screen` object.
 | screenAngle | number | Is the angle among 0, 90, 180, 270 degrees from natural orientation of the monitor device. (read only) |
 | baseAngle   | number | Is the initial screen angle from natural orientation of the monitor device. |
 
-#### *constructor* (initConfig) : ScreenConfig
+#### *constructor* (initConfig [, opts]) : ScreenConfig
 
 Creates a new instance of this class.
+
+If *initConfig* is a [ClassConfig][class-config-base-url] object and *opts.*`sharePrivate` is true, this instance shares `.$private` property with *initConfig* object.
+This function is for screens of which windows have a same top window.
 
 ##### Parameters:
 
 | Parameter    | Type                       | Description                      |
 |:-------------|:--------------------------:|:---------------------------------|
-| *initConfig* | object &#124; ScreenConfig | An object to initialize a new instance.|
+| *initConfig* | object &#124; ScreenConfig | An object to initialize a new instance. |
+| *opts*       | object                     | True, if sharing .$private of initConfig which is ClassConfig object. (By default, falsy) |
 
 
 ## License
@@ -183,4 +189,5 @@ See the file LICENSE in this distribution for more details.
 
 [jsdom-url]: https://github.com/jsdom/jsdom
 [jsdom-browser-url]: https://github.com/sttk/jsdom-browser
+[class-config-base-url]: https://github.com/sttk/class-config-base
 

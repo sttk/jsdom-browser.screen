@@ -194,4 +194,78 @@ describe('screen/config', () => {
     expect(screenConfig.baseAngle).to.equal(90)
     expect(ScreenConfig.calcScreenAngle(180 - 90)).to.equal(90)
   })
+
+  it('Should share private data with other screen config', () => {
+    const config1 = new ScreenConfig()
+    const config2 = new ScreenConfig(config1)
+    const config3 = new ScreenConfig(config1, { sharePrivate: true })
+
+    expect(config1.width).to.equal(1024)
+    expect(config1.height).to.equal(768)
+    expect(config1.availTop).to.equal(0)
+    expect(config1.availLeft).to.equal(0)
+    expect(config1.availRight).to.equal(0)
+    expect(config1.availBottom).to.equal(0)
+    expect(config1.deviceAngle).to.equal(0)
+    expect(config1.screenAngle).to.equal(0)
+    expect(config1.baseAngle).to.equal(0)
+
+    expect(config2.width).to.equal(1024)
+    expect(config2.height).to.equal(768)
+    expect(config2.availTop).to.equal(0)
+    expect(config2.availLeft).to.equal(0)
+    expect(config2.availRight).to.equal(0)
+    expect(config2.availBottom).to.equal(0)
+    expect(config2.deviceAngle).to.equal(0)
+    expect(config2.screenAngle).to.equal(0)
+    expect(config2.baseAngle).to.equal(0)
+
+    expect(config3.width).to.equal(1024)
+    expect(config3.height).to.equal(768)
+    expect(config3.availTop).to.equal(0)
+    expect(config3.availLeft).to.equal(0)
+    expect(config3.availRight).to.equal(0)
+    expect(config3.availBottom).to.equal(0)
+    expect(config3.deviceAngle).to.equal(0)
+    expect(config3.screenAngle).to.equal(0)
+    expect(config3.baseAngle).to.equal(0)
+
+    config1.width = 2048
+    config2.height = 1600
+    config3.availTop = 10
+    config1.availLeft = 20
+    config2.availRight = 30
+    config3.availBottom = 40
+    config1.deviceAngle = 100
+
+    expect(config1.width).to.equal(2048)
+    expect(config1.height).to.equal(768)
+    expect(config1.availTop).to.equal(10)
+    expect(config1.availLeft).to.equal(20)
+    expect(config1.availRight).to.equal(0)
+    expect(config1.availBottom).to.equal(40)
+    expect(config1.deviceAngle).to.equal(100)
+    expect(config1.screenAngle).to.equal(90)
+    expect(config1.baseAngle).to.equal(0)
+
+    expect(config2.width).to.equal(1024)
+    expect(config2.height).to.equal(1600)
+    expect(config2.availTop).to.equal(0)
+    expect(config2.availLeft).to.equal(0)
+    expect(config2.availRight).to.equal(30)
+    expect(config2.availBottom).to.equal(0)
+    expect(config2.deviceAngle).to.equal(0)
+    expect(config2.screenAngle).to.equal(0)
+    expect(config2.baseAngle).to.equal(0)
+
+    expect(config3.width).to.equal(2048)
+    expect(config3.height).to.equal(768)
+    expect(config3.availTop).to.equal(10)
+    expect(config3.availLeft).to.equal(20)
+    expect(config3.availRight).to.equal(0)
+    expect(config3.availBottom).to.equal(40)
+    expect(config3.deviceAngle).to.equal(100)
+    expect(config3.screenAngle).to.equal(90)
+    expect(config3.baseAngle).to.equal(0)
+  })
 })

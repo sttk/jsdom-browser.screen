@@ -1,15 +1,18 @@
 'use strict'
 
 const { ScreenConfig } = require('../../src')
+const Config = require('class-config-base')
 
-const configMap = new WeakMap()
+const $configManager = new Config.Manager()
 
 module.exports = win => {
-  let screenConfig = configMap.get(win._top)
-  if (!screenConfig) {
-    screenConfig = new ScreenConfig()
-    configMap.set(win._top, screenConfig)
+  let screenConfig
+  const rootScreen = win._top.screen
+  const rootScreenConfig = $configManager.getConfig(rootScreen)
+  if (rootScreenConfig) {
+    screenConfig = new ScreenConfig(rootScreenConfig, { sharePrivate: true })
+  } else {
+    screenConfig = new ScreenConfig({ $configManager })
   }
-
   screenConfig.configure(win.screen)
 }

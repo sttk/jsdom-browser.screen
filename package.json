@@ -7,7 +7,7 @@
     "src/"
   ],
   "scripts": {
-    "test": "eslint . && mocha",
+    "test": "eslint . && mocha test test/lib",
     "coverage": "nyc --reporter=lcov --reporter=text-summary npm test",
     "coveralls": "nyc --reporter=text-lcov npm test | coveralls",
     "wpt:install": "git clone https://github.com/web-platform-tests/wpt test/wpt/tests",

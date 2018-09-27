@@ -8,15 +8,28 @@
 // https://www.w3.org/TR/2018/WD-screen-orientation-20180706/
 // (3.1) #extensions-to-the-screen-interface
 
-const ConfigBase = require('class-config-base')
-const { readonly, writable } = ConfigBase
+const Config = require('class-config-base')
+const { readonly, writable } = Config
 const defaultNumber = require('default-number')
 const defaultConfig = require('./default')
 const calcScreenAngle = require('./lib/calc-screen-angle')
 
-class ScreenConfig extends ConfigBase {
-  constructor (initConfig) {
-    super(initConfig, defaultConfig)
+class ScreenConfig extends Config {
+  constructor (initConfig, opts) {
+    super(initConfig, defaultConfig, opts)
+
+    let configManager
+    if (initConfig && initConfig.$configManager) {
+      configManager = initConfig.$configManager
+    } else {
+      configManager = new Config.Manager()
+    }
+    Object.defineProperty(this, '$configManager', { value: configManager })
+  }
+
+  configure (screen, descriptors) {
+    super.configure(screen, descriptors)
+    this.$configManager.set(screen, this)
   }
 
   defineMorePrivates (priv) {
