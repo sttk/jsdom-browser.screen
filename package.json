@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/sttk/jsdom-browser.screen#readme",
   "devDependencies": {
-    "chai": "^4.1.2",
+    "chai": "^4.2.0",
     "coveralls": "^3.0.2",
     "del": "^3.0.0",
     "gulp": "^4.0.0",
@@ -39,12 +39,12 @@
     "gulp-replace": "^1.0.0",
     "gulp-showhelp": "^1.2.0",
     "mocha": "^5.2.0",
-    "nyc": "^12.0.2",
+    "nyc": "^13.0.1",
     "webidl2js": "^9.0.1",
-    "wpt-runner": "^2.4.0"
+    "wpt-runner": "^2.5.0"
   },
   "dependencies": {
-    "class-config-base": "^1.0.0",
+    "class-config-base": "^1.1.0",
     "default-number": "^0.1.0"
   }
 }
