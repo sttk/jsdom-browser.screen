@@ -12,7 +12,7 @@ describe('Rotate screen', () => {
       availBottom: 56,
       availLeft: 4,
       availRight: 6,
-      deviceAngle: -90,
+      deviceAngle: 90,
     })
     const screen = Screen.create()
     screenConfig.configure(screen)
@@ -35,7 +35,7 @@ describe('Rotate screen', () => {
     expect(screen.availWidth).to.equal(1000 - 4 - 6)
     expect(screen.availHeight).to.equal(1280 - 23 - 56)
 
-    screenConfig.deviceAngle = 98
+    screenConfig.deviceAngle = -98
     expect(screenConfig.screenAngle).to.equal(90)
     expect(screenConfig.baseAngle).to.equal(270)
 
@@ -57,7 +57,7 @@ describe('Rotate screen', () => {
     expect(screen.availWidth).to.equal(1000 - 4 - 6)
     expect(screen.availHeight).to.equal(1280 - 23 - 56)
 
-    screenConfig.deviceAngle = 245
+    screenConfig.deviceAngle = -245
     expect(screenConfig.screenAngle).to.equal(270)
     expect(screenConfig.baseAngle).to.equal(270)
 
