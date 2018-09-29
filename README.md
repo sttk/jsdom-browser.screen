@@ -164,7 +164,7 @@ See the file LICENSE in this distribution for more details.
 
 [repo-url]: https://github.com/sttk/jsdom-browser.screen/
 
-[npm-img]: https://img.shields.io/badge/npm-v0.2.0-blue.svg
+[npm-img]: https://img.shields.io/badge/npm-v0.2.1-blue.svg
 [npm-url]: https://www.npmjs.org/package/jsdom-browser.screen/
 
 [mit-img]: https://img.shields.io/badge/license-MIT-green.svg
