@@ -3,8 +3,10 @@
 // https://www.w3.org/TR/screen-orientation/
 // (3.2) #screenorientation-interface
 
-function calcScreenAngle (angle) {
-  angle %= 360
+function calcScreenAngle (deviceAngle) {
+  // When device rotates 90deg clockwise, screen compensates by rotating 90deg
+  // counterclockwise, then screen angle becomes 270deg.
+  let angle = -deviceAngle % 360
   if (angle < 0) {
     angle = 360 + angle
   }

@@ -28,7 +28,7 @@ const screenConfig = new ScreenConfig({
   availLeft: 0,
   availRight: 0,
   availBottom: 0,
-  deviceAngle: 90,
+  deviceAngle: -90,
 })
 ```
 
@@ -52,8 +52,8 @@ screenConfig.availTop  // => 23
 screenConfig.availLeft  // => 0
 screenConfig.availRight  // => 0
 screenConfig.availBottom  // => 0
-screenConfig.deviceAngle  // => 90
-screenConfig.screenAngle  // => 90  // calculates device angle to 90 * n (n = 0〜3)
+screenConfig.deviceAngle  // => -90
+screenConfig.screenAngle  // => 90  // calculates negative value of device angle to 90 * n (n = 0〜3)
 screenConfig.baseAngle  // => 90   // is initial screen angle
 ```
 
@@ -63,7 +63,7 @@ screenConfig.baseAngle  // => 90   // is initial screen angle
 > to implement [Screen Orientation API][orientation-spec-url].
 
 ```js
-screenConfig.deviceAngle = 200
+screenConfig.deviceAngle = -200
 
 window.screen.width  // => 800
 window.screen.height  // => 1280
@@ -78,7 +78,7 @@ screenConfig.availTop  // => 23
 screenConfig.availLeft  // => 0
 screenConfig.availRight  // => 0
 screenConfig.availBottom  // => 0
-screenConfig.deviceAngle  // => 200
+screenConfig.deviceAngle  // => -200
 screenConfig.screenAngle  // => 180
 screenConfig.baseAngle  // => 90
 ```
@@ -136,7 +136,7 @@ Is the class to configure a `Screen` object.
 | availRight  | number | Is the right position of available area from right side of the monitor device. |
 | availBottom | number | Is the bottom position of available area from right side of the monitor device. |
 | deviceAngle | number | Is the angle from natural orientation of the monitor device. |
-| screenAngle | number | Is the angle among 0, 90, 180, 270 degrees from natural orientation of the monitor device. (read only) |
+| screenAngle | number | Is the angle among 0, 90, 180, 270 degrees rounded the opposite direction value of the device angle. (read only) |
 | baseAngle   | number | Is the initial screen angle from natural orientation of the monitor device. |
 
 #### *constructor* (initConfig [, opts]) : ScreenConfig
