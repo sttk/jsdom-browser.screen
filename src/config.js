@@ -34,6 +34,13 @@ class ScreenConfig extends Config {
 
   defineMorePrivates (priv) {
     priv.baseAngle = calcScreenAngle(priv.deviceAngle)
+
+    Object.defineProperty(priv, 'screenAngle', {
+      enumerable: true,
+      configurable: true,
+      get: () => calcScreenAngle(priv.deviceAngle),
+      set: () => {},
+    })
   }
 
   static calcScreenAngle (deviceAngle) {
@@ -72,6 +79,10 @@ class ScreenConfig extends Config {
         set: v => { priv.availBottom = defaultNumber(v, priv.availBottom, 0) },
       }),
 
+      screenAngle: readonly({
+        get: () => priv.screenAngle,
+      }),
+
       deviceAngle: writable({
         get: () => priv.deviceAngle,
         set: v => {
@@ -79,10 +90,6 @@ class ScreenConfig extends Config {
         }
       }),
     }
-  }
-
-  get screenAngle () {
-    return calcScreenAngle(this.deviceAngle)
   }
 
   defineInterfaces (cfg, inst) {

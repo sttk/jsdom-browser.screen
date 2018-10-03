@@ -267,4 +267,26 @@ describe('screen/config', () => {
     expect(config3.screenAngle).to.equal(90)
     expect(config3.baseAngle).to.equal(0)
   })
+
+  it('Should overwrite .screenAngle', () => {
+    const config1 = new ScreenConfig()
+    const config2 = new ScreenConfig(config1, { sharePrivate: true })
+
+    expect(config1.screenAngle).to.equal(0)
+    expect(config2.screenAngle).to.equal(0)
+
+    let screenAngle = 90
+
+    Object.defineProperty(config1.$private, 'screenAngle', {
+      enumerable: true,
+      get: () => screenAngle,
+    })
+
+    expect(config1.screenAngle).to.equal(90)
+    expect(config2.screenAngle).to.equal(90)
+
+    screenAngle = 200
+    expect(config1.screenAngle).to.equal(200)
+    expect(config2.screenAngle).to.equal(200)
+  })
 })
